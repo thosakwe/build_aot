@@ -12,7 +12,7 @@ class DillToCBuilder implements Builder {
   @override
   Map<String, List<String>> get buildExtensions {
     return const {
-      '.dill': const ['.c']
+      '.vm.app.dill': const ['.vm.app.c']
     };
   }
 
