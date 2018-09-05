@@ -1,0 +1,10 @@
+builders:
+  dill_to_c:
+    import: "package:build_aot/build_aot.dart"
+    builder_factories:
+      - dillToCBuilder
+    build_extensions:
+      .dart:
+        - .c
+    auto_apply: root
+    build_to: source
