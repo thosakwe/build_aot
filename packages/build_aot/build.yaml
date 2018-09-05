@@ -4,7 +4,8 @@ builders:
     builder_factories:
       - dillToCBuilder
     build_extensions:
-      .dart:
+      .dill:
         - .c
-    auto_apply: root
-    build_to: source
+    auto_apply: root_package
+    applies_builders:
+      - build_vm_compilers|entrypoint
