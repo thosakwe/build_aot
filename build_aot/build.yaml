@@ -1,11 +1,28 @@
 builders:
-  dart_to_dill:
+  text:
     import: "package:build_aot/build_aot.dart"
-    builder_factories:
-      - dillBuilder
-      - dillToCBuilder
-    build_extensions:
-      .dart:
-        - .dill
-        - .dill.txt
     auto_apply: root_package
+    builder_factories:
+      - textBuilder
+    build_extensions:
+      .vm.app.dill:
+        - .txt
+    applies_builders:
+      - "build_vm_compilers|vm"
+  aot:
+    import: "package:build_aot/build_aot.dart"
+    auto_apply: root_package
+    builder_factories:
+      - aotBuilder
+    build_extensions:
+      .vm.app.dill:
+        - .asm
+    applies_builders:
+      - "build_vm_compilers|vm"
+post_process_builders:
+  cleanup:
+    import: "package:build_aot/build_aot.dart"
+    builder_factory: cleanupBuilder
+    defaults:
+      release_options:
+        enabled: true
